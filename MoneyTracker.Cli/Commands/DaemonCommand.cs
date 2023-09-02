@@ -11,7 +11,8 @@ public class DaemonCommand : AsyncCommand<DamonSettings>
     {
         var notifyServices = new List<INotifyService>
         {
-            new ConsoleNotifyService()
+            new ConsoleNotifyService(),
+            new DiscordNotifyService(settings.WebHookUrls)
         };
         
         var moneyTracker = new MoneyTracker(settings.Hostname, settings.MailAddress, settings.Password, settings.SenderAddress, settings.ThresholdYen, notifyServices);

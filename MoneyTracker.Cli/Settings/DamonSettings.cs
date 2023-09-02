@@ -1,11 +1,10 @@
-using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace Aijkl.MoneyTracker.Settings;
 
 public class DamonSettings : CommandSettings
 {
-    public DamonSettings(string hostname, string mailAddress, string password, string senderAddress, int thresholdYen, int dayCount)
+    public DamonSettings(string hostname, string mailAddress, string password, string senderAddress, int thresholdYen, int dayCount, string[] webHookUrls)
     {
         Hostname = hostname;
         MailAddress = mailAddress;
@@ -13,6 +12,7 @@ public class DamonSettings : CommandSettings
         SenderAddress = senderAddress;
         ThresholdYen = thresholdYen;
         DayCount = dayCount;
+        WebHookUrls = webHookUrls;
     }
 
     [CommandArgument(0, "<HOSTNAME>")]
@@ -35,6 +35,9 @@ public class DamonSettings : CommandSettings
     
     [CommandArgument(6, "<INTERVAL_MS>")]
     public int IntervalMs { get; set; }
+    
+    [CommandOption("--webhook-url")]
+    public string[] WebHookUrls { set; get; }
 
     // TODO Validate
 }

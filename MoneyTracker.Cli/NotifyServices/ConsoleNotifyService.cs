@@ -4,7 +4,7 @@ namespace Aijkl.MoneyTracker.NotifyServices;
 
 public class ConsoleNotifyService : INotifyService
 {
-    public void Notify(List<WithdrawalDetail> details, DateTime since, DateTime until)
+    public Task Notify(List<WithdrawalDetail> details, DateTime since, DateTime until)
     {
         AnsiConsole.MarkupLine("怪しい出金がありました");
         AnsiConsole.MarkupLine($"期間: [bold]{since}[/] 〜 [bold]{until}[/]");
@@ -24,5 +24,7 @@ public class ConsoleNotifyService : INotifyService
         }
         
         AnsiConsole.Write(table);
+
+        return Task.CompletedTask;
     }
 }
