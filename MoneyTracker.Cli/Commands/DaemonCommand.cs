@@ -20,7 +20,7 @@ public class DaemonCommand : AsyncCommand<DamonSettings>
         {
             try
             {
-                await moneyTracker.RunAsync(DateTime.Now.Date.AddDays(-settings.DayCount));
+                await moneyTracker.RunAsync(DateTime.Now.Date.AddDays(-(settings.DayCount - 1)));
                 AnsiConsole.MarkupLine($"Checked. {DateTime.Now}");
                 await Task.Delay(settings.IntervalMs);
             }
