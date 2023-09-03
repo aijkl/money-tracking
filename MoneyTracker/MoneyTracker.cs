@@ -49,7 +49,7 @@ public class MoneyTracker
         {
             foreach (var notifyService in _notifyServices)
             {
-                notifyService.Notify(details, since, until);
+                await notifyService.Notify(details, since, until);
             }
         }
         
