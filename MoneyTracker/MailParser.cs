@@ -4,7 +4,7 @@ namespace Aijkl.MoneyTracker;
 
 public static class MailParser
 {
-    private static readonly Regex WithdrawalRegex = new Regex("出金日 ： (?<date>.+)\n出金額 ： (?<amount>.+)\n内容 ： (?<description>.+)", RegexOptions.Compiled | RegexOptions.Multiline);
+    private static readonly Regex WithdrawalRegex = new Regex("出金日　：　(?<date>.+)\n出金額　：　(?<amount>.+)\n内容　　：　(?<description>.+)", RegexOptions.Compiled | RegexOptions.Multiline);
     public static WithdrawalDetail? TryParseWithdrawal(string body)
     {
         try
