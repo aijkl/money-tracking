@@ -1,4 +1,5 @@
-﻿using Aijkl.MoneyTracker.Commands;
+﻿using System.Text;
+using Aijkl.MoneyTracker.Commands;
 using Spectre.Console.Cli;
 
 namespace Aijkl.MoneyTracker;
@@ -7,6 +8,8 @@ public class Program
 {
     public static async Task<int> Main(string[] args)
     {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        
         var commandApp = new CommandApp();
         commandApp.Configure(x =>
         {
