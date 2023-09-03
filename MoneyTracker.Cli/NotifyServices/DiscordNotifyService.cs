@@ -18,11 +18,11 @@ public class DiscordNotifyService : INotifyService
         var embed = new EmbedBuilder
         {
             Title = "怪しい出金を検出しました :man_police_officer:",
-            Description = $"期間: {since:yyyy-m-d} 〜 {until:yyyy-m-d}\n合計: {details.Sum(x => x.Amount)} 円"
+            Description = $"期間: {since:yyyy/MM/dd} 〜 {until:yyyy/MM/dd}\n合計: {details.Sum(x => x.Amount)} 円"
         };
         foreach (var detail in details)
         {
-            embed.AddField(detail.Description, $"{detail.Amount} 円\n{detail.Date}");
+            embed.AddField(detail.Description, $"{detail.Amount} 円\n{detail.Date: yyyy/MM/dd}");
         }
     
         foreach (var webhookUrl in _webhookUrls)

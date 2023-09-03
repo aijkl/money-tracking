@@ -7,7 +7,7 @@ public class ConsoleNotifyService : INotifyService
     public Task Notify(List<WithdrawalDetail> details, DateTime since, DateTime until)
     {
         AnsiConsole.MarkupLine("怪しい出金がありました");
-        AnsiConsole.MarkupLine($"期間: [bold]{since}[/] 〜 [bold]{until}[/]");
+        AnsiConsole.MarkupLine($"期間: [bold]{since: yyyy/MM/dd}[/] 〜 [bold]{until: yyyy/MM/dd}[/]");
         AnsiConsole.MarkupLine($"合計: [bold]{details.Sum(x => x.Amount)}[/] 円");
 
         var table = new Table
@@ -20,7 +20,7 @@ public class ConsoleNotifyService : INotifyService
         table.AddColumn("内容");
         foreach (var detail in details)
         {
-            table.AddRow(detail.Date.ToString(), detail.Amount.ToString(), detail.Description);
+            table.AddRow(detail.Date.ToString("yyyy/MM/dd"), detail.Amount.ToString(), detail.Description);
         }
         
         AnsiConsole.Write(table);
